@@ -79,4 +79,4 @@
 - анимации – `src/app/globals.css` и `src/components/motion/`;
 - кнопки, поля, контейнер – `src/lib/styles.ts`;
 - логотип – `src/components/layout/Logo.tsx`;
-- иконки сайта – `src/app/icon.svg`, `src/app/apple-icon.png`, `src/app/manifest.ts`.
+- иконки сайта – `src/app/favicon.ico` и `src/app/icon.svg`.
