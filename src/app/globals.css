@@ -1,0 +1,97 @@
+/*
+  МедиаГалерея — «Светлый минимализм». Токены для Tailwind 4.
+  Этим заменяются блоки @theme в src/app/globals.css (старые primary / cta / accent-light / canvas удалить).
+  Имена дают классы: bg-paper, bg-surface, bg-sunken, border-line, text-ink, text-ink-2, text-muted,
+  border-field, text-accent, font-sans, font-mono, text-display, text-heading, text-title, text-lead,
+  text-label, text-meta, text-numeral, max-w-page.
+  Скругления — штатные Tailwind: rounded-sm = 4px (превью), rounded-md = 6px (кнопки, поля); блоки без скругления.
+*/
+@import "tailwindcss";
+
+@theme static {
+  /* Цвета */
+  --color-paper: #ffffff;   /* фон страницы, карточек, полей */
+  --color-surface: #f4f4f2; /* спокойные блоки: призыв, панели форм, строка при наведении */
+  --color-sunken: #e9e9e6;  /* подложка превью, пока нет картинки */
+  --color-line: #e6e6e3;    /* тонкие разделители 1px */
+  --color-field: #8a8a86;   /* рамка поля ввода (3.5:1 к белому — граница видна) */
+  --color-ink: #0e0e0e;     /* текст, главная кнопка, сильная линия над группой, «Г» в логотипе */
+  --color-ink-2: #3a3a3a;   /* вводный текст; наведение на главную кнопку */
+  --color-muted: #6b6b6b;   /* подписи и мета: 5.3:1 к белому, не мельче 12px */
+  --color-accent: #d23a12;  /* квадрат логотипа, номера разделов, крупные цифры, активный пункт меню; текстом от 13px */
+
+  /* Ширина контейнера: 1360px с полями 40px (на телефоне 16px) */
+  --container-page: 85rem;
+
+  /* Шкала текста */
+  --text-numeral: 4.5rem;              /* 72px — крупная цифра-счётчик, цвет accent */
+  --text-numeral--line-height: 1;
+  --text-numeral--letter-spacing: -0.04em;
+  --text-numeral--font-weight: 600;
+
+  --text-display: 5.25rem;             /* 84px — заголовок первого экрана (на телефоне 2.75rem) */
+  --text-display--line-height: 0.98;
+  --text-display--letter-spacing: -0.045em;
+  --text-display--font-weight: 600;
+
+  --text-display-sm: 3.25rem;          /* 52px — заголовок блока-призыва */
+  --text-display-sm--line-height: 1;
+  --text-display-sm--letter-spacing: -0.04em;
+  --text-display-sm--font-weight: 600;
+
+  --text-heading: 2.75rem;             /* 44px — заголовок раздела и h1 внутренних страниц (на телефоне 2rem) */
+  --text-heading--line-height: 1;
+  --text-heading--letter-spacing: -0.035em;
+  --text-heading--font-weight: 600;
+
+  --text-subheading: 1.5rem;           /* 24px — «Изображения / Видео / Аудио», заголовки форм */
+  --text-subheading--line-height: 1.2;
+  --text-subheading--letter-spacing: -0.02em;
+  --text-subheading--font-weight: 600;
+
+  --text-title: 1.1875rem;             /* 19px — название в карточке, максимум 2 строки */
+  --text-title--line-height: 1.3;
+  --text-title--letter-spacing: -0.01em;
+  --text-title--font-weight: 600;
+
+  --text-lead: 1.1875rem;              /* 19px — вводный абзац, цвет ink-2 */
+  --text-lead--line-height: 1.55;
+
+  --text-label: 0.8125rem;             /* 13px моно ПРОПИСНЫМИ — надстрочные подписи и номера разделов */
+  --text-label--line-height: 1.5;
+  --text-label--letter-spacing: 0.04em;
+
+  --text-meta: 0.75rem;                /* 12px моно ПРОПИСНЫМИ — «ВИДЕО / ОБУЧЕНИЕ», счётчики */
+  --text-meta--line-height: 1.5;
+  --text-meta--letter-spacing: 0.02em;
+}
+
+/* Шрифты подключаются через next/font в layout.tsx: Golos_Text → --font-golos, JetBrains_Mono → --font-jetbrains */
+@theme inline {
+  --font-sans: var(--font-golos), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+@layer base {
+  html { background: var(--color-paper); color: var(--color-ink); }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  /* Фокус с клавиатуры: 2px ink с отступом 3px (у полей — своя рамка) */
+  :focus-visible:not(input, textarea, select) {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 3px;
+  }
+}
+
+::selection {
+  background-color: #f6d3c8; /* бледный accent */
+  color: var(--color-ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after { transition-duration: 0.01ms !important; animation: none !important; }
+}
