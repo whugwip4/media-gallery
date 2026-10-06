@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7dd3fc"/>
+      <stop offset="0.6" stop-color="#e0f2fe"/>
+      <stop offset="1" stop-color="#fef3c7"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#38bdf8"/>
+      <stop offset="1" stop-color="#0c4a6e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#sky)"/>
+  <circle cx="880" cy="200" r="70" fill="#fffbeb" opacity="0.9"/>
+  <path fill="#94a3b8" d="M0 560L170 330L300 450L470 250L640 470L780 320L960 500L1080 380L1200 470V600H0Z"/>
+  <g fill="#f8fafc">
+    <path d="M170 330L128 388L150 375L168 392L186 372L203 360Z"/>
+    <path d="M470 250L427 300L450 292L470 310L490 294L512 305Z"/>
+    <path d="M780 320L745 357L765 350L782 366L800 352L825 365Z"/>
+  </g>
+  <path fill="#475569" d="M0 600L120 470L260 590L400 420L560 600L720 460L880 600L1030 480L1200 600V620H0Z"/>
+  <rect y="600" width="1200" height="300" fill="url(#water)"/>
+  <path fill="#334155" opacity="0.35" d="M0 600L120 730L260 610L400 780L560 600L720 740L880 600L1030 720L1200 600Z"/>
+  <g stroke="#e0f2fe" stroke-width="3" stroke-linecap="round" opacity="0.6">
+    <line x1="140" y1="680" x2="260" y2="680"/>
+    <line x1="520" y1="720" x2="700" y2="720"/>
+    <line x1="860" y1="790" x2="1010" y2="790"/>
+    <line x1="300" y1="830" x2="420" y2="830"/>
+  </g>
+  <g fill="#14532d">
+    <path d="M60 610L90 520L120 610Z"/>
+    <path d="M100 615L135 500L170 615Z"/>
+    <path d="M1060 612L1090 530L1120 612Z"/>
+    <path d="M1100 615L1140 505L1180 615Z"/>
+  </g>
+</svg>

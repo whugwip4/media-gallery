@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#312e81"/>
+      <stop offset="0.35" stop-color="#9d174d"/>
+      <stop offset="0.65" stop-color="#f97316"/>
+      <stop offset="1" stop-color="#fde68a"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="600" cy="610" r="420" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff7ed" stop-opacity="0.9"/>
+      <stop offset="0.35" stop-color="#fdba74" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#f97316" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#sky)"/>
+  <circle cx="600" cy="610" r="420" fill="url(#glow)"/>
+  <circle cx="600" cy="610" r="130" fill="#fff1d6"/>
+  <path fill="#6b2155" opacity="0.9" d="M0 900V660h60v-40h50v60h40v-90h70v70h50v-120h80v100h40v-60h60v80h50v-140h90v120h40v-70h70v90h50v-110h80v100h50v-50h70v70h60v-80h90v40h100V900Z"/>
+  <path fill="#1e1b4b" d="M0 900V720h90v-50h80v90h60v-170h110v150h50v-90h90v120h70v-230h120v220h60v-120h100v140h70v-80h90v100h110v-60h100V900Z"/>
+  <g fill="#fcd34d" opacity="0.85">
+    <rect x="250" y="610" width="14" height="18"/>
+    <rect x="280" y="610" width="14" height="18"/>
+    <rect x="310" y="650" width="14" height="18"/>
+    <rect x="250" y="690" width="14" height="18"/>
+    <rect x="570" y="560" width="14" height="18"/>
+    <rect x="600" y="560" width="14" height="18"/>
+    <rect x="630" y="600" width="14" height="18"/>
+    <rect x="570" y="640" width="14" height="18"/>
+    <rect x="630" y="680" width="14" height="18"/>
+    <rect x="750" y="660" width="14" height="18"/>
+    <rect x="780" y="700" width="14" height="18"/>
+    <rect x="920" y="720" width="14" height="18"/>
+    <rect x="950" y="760" width="14" height="18"/>
+  </g>
+</svg>
