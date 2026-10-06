@@ -40,7 +40,7 @@ export default function MobileMenu() {
       {open && (
         <div
           id="mobile-menu"
-          className="absolute inset-x-0 top-full max-h-[calc(100dvh-4.75rem)] overflow-y-auto border-b border-ink bg-paper"
+          className="absolute inset-x-0 top-full max-h-[calc(100dvh-4.75rem)] overflow-y-auto border-b border-ink bg-paper motion-safe:animate-menu"
         >
           <div className={`${container} pb-6 pt-4`}>
             <Form
@@ -60,10 +60,14 @@ export default function MobileMenu() {
 
             <nav aria-label="Мобильное меню" className="mt-2">
               <ul>
-                {NAV_ITEMS.map((item) => {
+                {NAV_ITEMS.map((item, index) => {
                   const active = isActivePath(pathname, item.href);
                   return (
-                    <li key={item.href} className="border-b border-line">
+                    <li
+                      key={item.href}
+                      className="border-b border-line motion-safe:animate-rise"
+                      style={{ animationDelay: `${60 + index * 40}ms` }}
+                    >
                       <Link
                         href={item.href}
                         aria-current={active ? "page" : undefined}

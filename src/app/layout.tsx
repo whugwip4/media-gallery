@@ -30,7 +30,11 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="ru" className={`${golos.variable} ${jetbrains.variable} h-full antialiased`}>
+    <html
+      lang="ru"
+      data-scroll-behavior="smooth"
+      className={`${golos.variable} ${jetbrains.variable} h-full antialiased`}
+    >
       <body className="flex min-h-full flex-col bg-paper font-sans text-ink">
         <a
           href="#content"

@@ -1,4 +1,5 @@
 import { LogoMark } from "@/components/layout/Logo";
+import PageTransition from "@/components/motion/PageTransition";
 import { container } from "@/lib/styles";
 
 const BENEFITS = [
@@ -18,7 +19,7 @@ type AuthLayoutProps = {
 // (на телефоне блок скрыт, чтобы форма была сразу под рукой).
 export default function AuthLayout({ title, description, children, footer }: AuthLayoutProps) {
   return (
-    <div className={`${container} pt-10 sm:pt-16`}>
+    <PageTransition className={`${container} pt-10 sm:pt-16`}>
       <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
         <div className="max-w-md">
           <h1 className="text-heading max-sm:text-[2rem]">{title}</h1>
@@ -41,6 +42,6 @@ export default function AuthLayout({ title, description, children, footer }: Aut
           </ul>
         </aside>
       </div>
-    </div>
+    </PageTransition>
   );
 }

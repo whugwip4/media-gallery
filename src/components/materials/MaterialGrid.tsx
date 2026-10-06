@@ -1,4 +1,5 @@
 import MaterialCard from "./MaterialCard";
+import Reveal from "@/components/motion/Reveal";
 import type { Material } from "@/lib/types";
 
 type MaterialGridProps = {
@@ -31,7 +32,10 @@ export default function MaterialGrid({
     <div className="grid grid-cols-[repeat(auto-fill,minmax(min(15rem,100%),1fr))] gap-x-6 gap-y-10">
       {materials.map((material, index) => (
         // Первый ряд карточек виден сразу, его картинки грузим без задержки.
-        <MaterialCard key={material.id} material={material} eager={index < 4} />
+        // Карточки ниже экрана появляются при прокрутке лесенкой по четыре.
+        <Reveal key={material.id} delay={(index % 4) * 90} className="h-full">
+          <MaterialCard material={material} eager={index < 4} />
+        </Reveal>
       ))}
     </div>
   );

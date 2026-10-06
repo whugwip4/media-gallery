@@ -14,6 +14,7 @@ const BARS = [28, 60, 44, 92, 52, 108, 68, 40, 84, 52, 72, 32, 20, 36];
 
 // Обложка материала. У изображения это сама картинка, у видео и аудио — спокойные заглушки:
 // видео — рамка с кнопкой воспроизведения, аудио — белая волна на чёрном.
+// При наведении на карточку (класс group) заглушки оживают: волна «играет», полоса видео заполняется.
 export default function MaterialCover({ material, sizes, eager = false }: MaterialCoverProps) {
   if (material.type === "image" && material.fileUrl) {
     return (
@@ -33,10 +34,18 @@ export default function MaterialCover({ material, sizes, eager = false }: Materi
       <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" className="block size-full" aria-hidden>
         <rect width="400" height="300" className="fill-sunken" />
         <rect x="50" y="50" width="300" height="180" strokeWidth="1.5" className="fill-paper stroke-ink" />
-        <circle cx="200" cy="140" r="30" className="fill-ink" />
-        <path d="M191 125v30l25-15z" className="fill-paper" />
+        <g className="origin-center transition-transform duration-300 ease-out-soft [transform-box:fill-box] group-hover:scale-110">
+          <circle cx="200" cy="140" r="30" className="fill-ink" />
+          <path d="M191 125v30l25-15z" className="fill-paper" />
+        </g>
         <rect x="50" y="248" width="300" height="2" fill="#cfcfcb" />
-        <rect x="50" y="248" width="110" height="2" className="fill-ink" />
+        <rect
+          x="50"
+          y="248"
+          width="110"
+          height="2"
+          className="fill-ink origin-left transition-transform duration-[1400ms] ease-out-soft [transform-box:fill-box] group-hover:scale-x-[2.72]"
+        />
       </svg>
     );
   }
@@ -48,7 +57,17 @@ export default function MaterialCover({ material, sizes, eager = false }: Materi
         <g className="fill-paper">
           {BARS.map((_, index) => {
             const height = BARS[(index + material.id) % BARS.length];
-            return <rect key={index} x={122 + index * 12} y={150 - height / 2} width="4" height={height} />;
+            return (
+              <rect
+                key={index}
+                x={122 + index * 12}
+                y={150 - height / 2}
+                width="4"
+                height={height}
+                className="origin-center [transform-box:fill-box] group-hover:animate-wave"
+                style={{ animationDelay: `${(index % 7) * 70}ms` }}
+              />
+            );
           })}
         </g>
       </svg>

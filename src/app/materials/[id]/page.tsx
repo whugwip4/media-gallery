@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import MaterialGrid from "@/components/materials/MaterialGrid";
 import MediaViewer from "@/components/materials/MediaViewer";
+import PageTransition from "@/components/motion/PageTransition";
 import InfoRow from "@/components/ui/InfoRow";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { formatDate } from "@/lib/format";
@@ -33,12 +34,17 @@ export default async function MaterialPage(props: PageProps<"/materials/[id]">) 
     .slice(0, 3);
 
   return (
-    <div className={`${container} pt-6`}>
+    <PageTransition className={`${container} pt-6`}>
       <Link
         href={meta.href}
-        className="inline-flex h-11 items-center gap-2 text-[15px] text-muted transition-colors duration-150 hover:text-ink"
+        transitionTypes={["nav-back"]}
+        className="group inline-flex h-11 items-center gap-2 text-[15px] text-muted transition-colors duration-150 hover:text-ink"
       >
-        <ArrowLeft className="size-4" strokeWidth={1.8} aria-hidden />
+        <ArrowLeft
+          className="size-4 transition-transform duration-300 ease-out-soft group-hover:-translate-x-1"
+          strokeWidth={1.8}
+          aria-hidden
+        />
         {meta.plural}
       </Link>
 
@@ -75,6 +81,6 @@ export default async function MaterialPage(props: PageProps<"/materials/[id]">) 
           </div>
         </section>
       )}
-    </div>
+    </PageTransition>
   );
 }

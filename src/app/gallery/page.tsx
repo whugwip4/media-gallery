@@ -1,6 +1,8 @@
+import { ViewTransition } from "react";
 import type { Metadata } from "next";
 import GalleryFilters from "@/components/materials/GalleryFilters";
 import MaterialGrid from "@/components/materials/MaterialGrid";
+import PageTransition from "@/components/motion/PageTransition";
 import PageHero from "@/components/ui/PageHero";
 import { countMaterials } from "@/lib/format";
 import { getCategories, getMaterials } from "@/lib/materials";
@@ -14,7 +16,7 @@ export default async function GalleryPage(props: PageProps<"/gallery">) {
   const [categories, materials] = await Promise.all([getCategories(), getMaterials({ category: categorySlug })]);
 
   return (
-    <>
+    <PageTransition>
       <PageHero
         eyebrow={`Все разделы · ${countMaterials(materials.length)}`}
         title="Галерея"
@@ -22,10 +24,13 @@ export default async function GalleryPage(props: PageProps<"/gallery">) {
       />
       <div className={`${container} mt-8`}>
         <GalleryFilters activeType="all" basePath="/gallery" activeCategory={categorySlug} categories={categories} />
-        <div className="mt-10">
-          <MaterialGrid materials={materials} />
-        </div>
+        {/* При смене категории сетка плавно сменяется */}
+        <ViewTransition key={categorySlug ?? "all"} name="gallery-grid" share="auto" enter="auto" default="none">
+          <div className="mt-10">
+            <MaterialGrid materials={materials} />
+          </div>
+        </ViewTransition>
       </div>
-    </>
+    </PageTransition>
   );
 }

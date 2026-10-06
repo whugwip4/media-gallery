@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Form from "next/form";
 import { Search } from "lucide-react";
+import HeaderShell from "./HeaderShell";
 import Logo from "./Logo";
 import NavLinks from "./NavLinks";
 import MobileMenu from "./MobileMenu";
@@ -8,7 +9,7 @@ import { button, container } from "@/lib/styles";
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-paper">
+    <HeaderShell>
       <div className={`${container} flex h-19 items-center gap-6 xl:gap-10`}>
         <Logo />
         <NavLinks className="hidden lg:block" />
@@ -50,6 +51,6 @@ export default function Header() {
 
         <MobileMenu />
       </div>
-    </header>
+    </HeaderShell>
   );
 }

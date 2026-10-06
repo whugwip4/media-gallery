@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import TypeLabel from "@/components/materials/TypeLabel";
 import UploadForm from "@/components/materials/UploadForm";
+import PageTransition from "@/components/motion/PageTransition";
 import PageHero from "@/components/ui/PageHero";
 import { getCategories } from "@/lib/materials";
 import { container } from "@/lib/styles";
@@ -18,7 +19,7 @@ export default async function UploadPage() {
   const categories = await getCategories();
 
   return (
-    <>
+    <PageTransition>
       <PageHero
         eyebrow="Новый материал"
         title="Добавление материала"
@@ -52,6 +53,6 @@ export default async function UploadPage() {
           </div>
         </aside>
       </div>
-    </>
+    </PageTransition>
   );
 }

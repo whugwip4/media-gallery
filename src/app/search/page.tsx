@@ -3,6 +3,7 @@ import Form from "next/form";
 import Link from "next/link";
 import { Search } from "lucide-react";
 import MaterialGrid from "@/components/materials/MaterialGrid";
+import PageTransition from "@/components/motion/PageTransition";
 import PageHero from "@/components/ui/PageHero";
 import { plural } from "@/lib/format";
 import { getMaterials } from "@/lib/materials";
@@ -18,7 +19,7 @@ export default async function SearchPage(props: PageProps<"/search">) {
   const results = query ? await getMaterials({ q: query }) : [];
 
   return (
-    <>
+    <PageTransition>
       <PageHero
         eyebrow={query ? `Найдено · ${results.length}` : "Поиск по названию"}
         title="Поиск"
@@ -81,6 +82,6 @@ export default async function SearchPage(props: PageProps<"/search">) {
           </div>
         )}
       </div>
-    </>
+    </PageTransition>
   );
 }

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { LogOut, Plus } from "lucide-react";
 import MaterialGrid from "@/components/materials/MaterialGrid";
+import CountUp from "@/components/motion/CountUp";
+import PageTransition from "@/components/motion/PageTransition";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { formatDate, initials } from "@/lib/format";
 import { MATERIAL_TYPES, MATERIAL_TYPE_LIST } from "@/lib/material-types";
@@ -40,7 +42,7 @@ export default async function ProfilePage() {
   ];
 
   return (
-    <>
+    <PageTransition>
       <section className={`${container} pt-10 sm:pt-16`}>
         <div className="flex flex-wrap items-center justify-between gap-8">
           <div className="flex min-w-0 items-center gap-5">
@@ -82,7 +84,7 @@ export default async function ProfilePage() {
                   index === 0 ? "text-accent" : "text-ink"
                 }`}
               >
-                {stat.value}
+                <CountUp value={stat.value} delay={200 + index * 100} />
               </dd>
             </div>
           ))}
@@ -104,6 +106,6 @@ export default async function ProfilePage() {
           />
         </div>
       </section>
-    </>
+    </PageTransition>
   );
 }
